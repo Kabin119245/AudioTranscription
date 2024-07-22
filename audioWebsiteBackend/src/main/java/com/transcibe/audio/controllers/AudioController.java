@@ -42,14 +42,31 @@ public class AudioController {
 
 
     @PostMapping("/audios")
-    public Audio uploadAudio(@RequestParam("textId") String textId, @RequestParam("file") MultipartFile file, @RequestParam("user") String user) throws IOException {
+    public Audio uploadAudio(  @RequestParam("file") MultipartFile file) throws IOException {
         String filePath = fileStorage.saveFile(file);
         Audio audio = new Audio();
-        audio.setTextId(textId);
+        System.out.println("Received file with size: " + file.getSize()); // Logging file size
+        System.out.println("Received file with type: " + file.getContentType()); // Logging file type
         audio.setAudioFilePath(filePath);
-        audio.setUser(user);
         return audioRepository.save(audio);
     }
+
+//    @PostMapping("/audios")
+//    public Audio uploadAudio(@RequestParam("textId") String textId,
+//                             @RequestParam("file") MultipartFile file,
+//                             @RequestParam("username") String username) throws IOException {
+//        System.out.println("Received file with size: " + file.getSize()); // Logging file size
+//        System.out.println("Received file with type: " + file.getContentType()); // Logging file type
+//
+//        String filePath = fileStorage.saveFile(file);
+//        Audio audio = new Audio();
+//        audio.setTextId(textId);
+//        audio.setAudioFilePath(filePath);
+//        audio.setUser(username);
+//        // Assuming a score of 10 for each transcription
+//
+//        return audioRepository.save(audio);
+//    }
 }
 
 
