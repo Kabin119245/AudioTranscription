@@ -2,7 +2,7 @@ package com.transcibe.audio.controllers;
 
 
 import com.transcibe.audio.dto.UserScore;
-import com.transcibe.audio.repositories.UserRepositroy;
+import com.transcibe.audio.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class UserController {
 
     @Autowired
-    private UserRepositroy userRepository;
+    private UserRepository userRepository;
 
     @GetMapping("/scores")
     public List<UserScore> getUserScores() {
