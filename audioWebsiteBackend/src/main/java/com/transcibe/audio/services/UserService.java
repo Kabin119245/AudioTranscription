@@ -18,18 +18,14 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public User registerUser(String username, String email, String phone, String password) {
+    public User registerUser(String name, String email, String phone, String password) {
         User user = new User();
-        user.setUsername(username);
+        user.setName(name);
         user.setEmail(email);
-        user.setPhoneNumber(phone);
+        user.setPhone(phone);
         user.setPassword(passwordEncoder.encode(password));
 
         return userRepository.save(user);
-    }
-
-    public Optional<User> findByUsername(String username) {
-        return userRepository.findByUsername(username);
     }
 
     public Optional<User> findByEmail(String email) {

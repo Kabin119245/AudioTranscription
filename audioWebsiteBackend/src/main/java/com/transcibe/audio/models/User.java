@@ -15,16 +15,16 @@ public class User {
 
     @Id
     private String id;
-    private String username;
+    private String name;
     private String email;
     private String password;
-    private String phoneNumber;
-    private List<String> transcriptionIds = new ArrayList<String>();
+    private String phone;
+  //  private List<String> transcriptionIds = new ArrayList<String>();
 
     // Get score based on the number of transcriptions
-    public int getScore() {
-        return (this.transcriptionIds != null ? this.transcriptionIds.size() : 0) * 10;
-    }
+//    public int getScore() {
+//        return (this.transcriptionIds != null ? this.transcriptionIds.size() : 0) * 10;
+//    }
 
 
 
