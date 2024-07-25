@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/jwtemail
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: 2078
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+  mail:
+    username: girikabin505@gmail.com
+    password: rjgb wfpn egfx oqqd
+
+
