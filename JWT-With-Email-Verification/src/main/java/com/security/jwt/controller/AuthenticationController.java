@@ -55,4 +55,9 @@ public class AuthenticationController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
+    @GetMapping("/greet")
+    public String greet(){
+        return "Hello World!";
+    }
 }
