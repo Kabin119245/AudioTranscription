@@ -51,15 +51,6 @@ public class UserController {
         return ResponseEntity.ok(users);
     }
 
-    @GetMapping("/texts")
-    public List<Text> getTexts() {
-        return textRepository.findAll();
-    }
-
-    @PostMapping("/texts")
-    public Text addText(@RequestBody Text text) {
-        return textRepository.save(text);
-    }
 
     @PostMapping("/audios")
     public Audio uploadAudio(@RequestParam("file") MultipartFile file) throws IOException {

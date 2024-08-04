@@ -3,12 +3,17 @@ package com.security.jwt.controller;
 import com.security.jwt.dto.LoginUserDto;
 import com.security.jwt.dto.RegisterUserDto;
 import com.security.jwt.dto.VerifyUserDto;
+import com.security.jwt.model.Text;
 import com.security.jwt.model.User;
+import com.security.jwt.repository.TextRepository;
 import com.security.jwt.responses.LoginResponse;
 import com.security.jwt.service.AuthenticationService;
 import com.security.jwt.service.JwtService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequestMapping("/api/auth/")
 @RestController
@@ -16,6 +21,9 @@ public class AuthenticationController {
     private final JwtService jwtService;
 
     private final AuthenticationService authenticationService;
+
+    @Autowired
+    private TextRepository textRepository;
 
     public AuthenticationController(JwtService jwtService, AuthenticationService authenticationService) {
         this.jwtService = jwtService;
@@ -59,5 +67,17 @@ public class AuthenticationController {
     @GetMapping("/greet")
     public String greet(){
         return "Hello World!";
+    }
+
+
+
+    @GetMapping("/texts")
+    public List<Text> getTexts() {
+        return textRepository.findAll();
+    }
+
+    @PostMapping("/texts")
+    public Text addText(@RequestBody Text text) {
+        return textRepository.save(text);
     }
 }

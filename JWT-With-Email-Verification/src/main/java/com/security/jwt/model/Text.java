@@ -17,6 +17,7 @@ import lombok.Setter;
 public class Text {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
     private String content;
 }
