@@ -1,7 +1,6 @@
 package com.security.jwt.controller;
 
-import com.security.jwt.model.Audio;
-import com.security.jwt.model.Text;
+
 import com.security.jwt.model.User;
 import com.security.jwt.repository.AudioRepository;
 import com.security.jwt.repository.TextRepository;
@@ -12,11 +11,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/users")
 @RestController
 public class UserController {
@@ -49,17 +47,6 @@ public class UserController {
     public ResponseEntity<List<User>> allUsers() {
         List <User> users = userService.allUsers();
         return ResponseEntity.ok(users);
-    }
-
-
-    @PostMapping("/audios")
-    public Audio uploadAudio(@RequestParam("file") MultipartFile file) throws IOException {
-        String filePath = fileStorage.saveFile(file);
-        Audio audio = new Audio();
-        System.out.println("Received file with size: " + file.getSize()); // Logging file size
-        System.out.println("Received file with type: " + file.getContentType()); // Logging file type
-        audio.setAudioFilePath(filePath);
-        return audioRepository.save(audio);
     }
 
     @GetMapping("/hello")

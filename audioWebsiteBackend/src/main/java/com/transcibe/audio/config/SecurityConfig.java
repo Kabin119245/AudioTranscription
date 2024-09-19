@@ -219,7 +219,7 @@ public class SecurityConfig {
                 )
                 .formLogin(formLogin -> formLogin
                         .loginProcessingUrl("/api/auth/login")
-                        .usernameParameter("email")
+                        .usernameParameter("username")
                         .passwordParameter("password")
                         .successHandler(successHandler())
                         .failureHandler(failureHandler())

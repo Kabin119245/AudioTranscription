@@ -4,6 +4,8 @@ package com.transcibe.audio.controllers;
 import com.transcibe.audio.models.User;
 
 import com.transcibe.audio.services.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -23,6 +25,8 @@ public class AuthController {
 
     @Autowired
     private UserService userService;
+
+    private Logger logger = LoggerFactory.getLogger(AuthController.class);
 
 
     private AuthenticationManager authenticationManager;
@@ -44,6 +48,7 @@ public class AuthController {
     public ResponseEntity<Map<String, String>> authenticateUser(@RequestBody User user) {
 
         System.out.println("Received user: " + user);
+        logger.info("User registered successfully", user);
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));
 

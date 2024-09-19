@@ -1,9 +1,7 @@
 package com.security.jwt.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,9 +16,9 @@ import lombok.Setter;
 
 public class Audio {
     @Id
-    private String Id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long Id;
     private String textId;
     private String audioFilePath;
-
 
 }
